@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Security Analyzer | Cyber Security Tool</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔐</text></svg>">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="cyber-header">
+            <h1>🔐 Password Security Analyzer</h1>
+            <p class="subtitle">Advanced ML-Powered Password Strength Assessment</p>
+        </div>
+
+        <!-- Password Input Section -->
+        <div class="password-input-section">
+            <div class="password-wrapper">
+                <input type="password" id="password" class="password-input" placeholder="Enter your password here..." autocomplete="off">
+                <button id="togglePassword" class="btn-show">Show</button>
+                <button id="copyBtn" class="btn-copy">Copy</button>
+                <button id="generateBtn" class="btn-generate">Generate Strong Password</button>
+            </div>
+        </div>
+
+        <!-- Dashboard Grid -->
+        <div class="dashboard-grid">
+            <!-- Strength Meter Card -->
+            <div class="dashboard-card">
+                <div class="card-title">
+                    <span>📊</span>
+                    <span>Password Strength</span>
+                </div>
+                <div class="strength-meter">
+                    <div class="strength-bar">
+                        <div class="strength-fill" id="strengthFill"></div>
+                    </div>
+                    <div class="strength-label" id="strengthLabel">Enter a password</div>
+                </div>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-label">ML Prediction</div>
+                        <div class="stat-value" id="mlPrediction">---</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-label">Entropy</div>
+                        <div class="stat-value" id="entropy">---</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-label">Security Score</div>
+                        <div class="stat-value" id="score">0</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Score Card -->
+            <div class="dashboard-card">
+                <div class="card-title">
+                    <span>🎯</span>
+                    <span>Security Score</span>
+                </div>
+                <div class="circular-score">
+                    <div class="score-circle">
+                        <svg width="150" height="150" viewBox="0 0 160 160">
+                            <defs>
+                                <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#00f3ff;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#b300ff;stop-opacity:1" />
+                                </linearGradient>
+                            </defs>
+                            <circle class="score-bg" cx="80" cy="80" r="72"></circle>
+                            <circle class="score-value" cx="80" cy="80" r="72"></circle>
+                        </svg>
+                        <div class="score-number" id="scoreNumber">0</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Breach Status Card -->
+            <div class="dashboard-card">
+                <div class="card-title">
+                    <span>🚨</span>
+                    <span>Breach Detection</span>
+                </div>
+                <div id="breachMessage" class="breach-alert none"></div>
+            </div>
+        </div>
+
+        <!-- Second Row -->
+        <div class="dashboard-grid">
+            <!-- Character Statistics -->
+            <div class="dashboard-card">
+                <div class="card-title">
+                    <span>📈</span>
+                    <span>Character Statistics</span>
+                </div>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-label">Length</div>
+                        <div class="stat-value" id="lengthStat">0</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-label">Uppercase</div>
+                        <div class="stat-value" id="uppercaseStat">0</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-label">Lowercase</div>
+                        <div class="stat-value" id="lowercaseStat">0</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-label">Digits</div>
+                        <div class="stat-value" id="digitsStat">0</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-label">Special</div>
+                        <div class="stat-value" id="specialStat">0</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Live Feedback -->
+            <div class="dashboard-card">
+                <div class="card-title">
+                    <span>⚡</span>
+                    <span>Live Feedback</span>
+                </div>
+                <div class="feedback-grid" id="feedbackContainer"></div>
+            </div>
+
+            <!-- Recommendations -->
+            <div class="dashboard-card">
+                <div class="card-title">
+                    <span>💡</span>
+                    <span>Recommendations</span>
+                </div>
+                <ul class="recommendations-list" id="recommendationsList"></ul>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
